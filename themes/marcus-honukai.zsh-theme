@@ -1,6 +1,15 @@
 # Mostly inspired by:
 # https://github.com/oskarkrawczyk/honukai-iterm-zsh/blob/master/honukai.zsh-theme
 
+# Remote info
+local remote_info='$((){
+   if [[ $REMOTE_ALIAS != "" ]]; then
+      echo "$REMOTE_ALIAS "
+   else
+      echo ""
+   fi
+})'
+
 # Directory info
 local current_dir='${PWD/#$HOME/~}'
 
@@ -23,6 +32,7 @@ local pyenv_virtualenv_info='$((){
 # Prompt
 PROMPT="\
 %{$fg[blue]%}◆ \
+%{$fg[white]%}${remote_info}\
 %{$fg[yellow]%}${current_dir} \
 ${git_info}\
 %{$fg[white]%}${pyenv_virtualenv_info}
